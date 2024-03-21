@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>encriptador de texto</title>
+    
+</head>
+<body>
+    <h1>encripta tu texto aqui</h1>
+    <label for="inputText">Texto:</label><br>
+    <textarea id="inputText" rows="4" cols="50"></textarea><br><br>
+
+    <button onclick="encryptText()">Encriptar</button>
+    <button onclick="decryptText()">Desencriptar</button>
+    <button onclick="copyText()">Copiar</button><br><br>
+
+    <label for="outputText">Resultado:</label><br>
+    <textarea id="outputText" rows="4" cols="50"></textarea><br>
+
+    <script>
+        function encryptText() {
+            var inputText = document.getElementById("inputText").value;
+            var encryptedText = encrypt(inputText);
+            document.getElementById("outputText").value = encryptedText;
+        }
+
+        function decryptText() {
+            var inputText = document.getElementById("inputText").value;
+            var decryptedText = decrypt(inputText);
+            document.getElementById("outputText").value = decryptedText;
+        }
+
+        function copyText() {
+            var outputText = document.getElementById("outputText");
+            outputText.select();
+            document.execCommand("copy");
+            alert("Texto copiado al portapapeles");
+        }
+
+        function encrypt(text) {
+            return text.replaceAll("e", "enter")
+                       .replaceAll("i", "imes")
+                       .replaceAll("a", "ai")
+                       .replaceAll("o", "ober")
+                       .replaceAll("u", "ufat");
+        }
+
+        function decrypt(text) {
+            return text.replaceAll("enter", "e")
+                       .replaceAll("imes", "i")
+                       .replaceAll("ai", "a")
+                       .replaceAll("ober", "o")
+                       .replaceAll("ufat", "u");
+        }
+    </script>
+</body>
+</html>
